@@ -1,0 +1,1 @@
+LDFLAGS = -Wl,--defsym=_memset=my_memset,--defsym=_memcpy=my_memcpy

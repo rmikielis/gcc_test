@@ -58,4 +58,8 @@ int my_memcmp(const void *s1, const void *s2, size_t n) {
     return 0;
 }
 
+/*
+void *_memset(void *s, int c, size_t n) __attribute__((alias("*my_memset")));
+void *_memcpy(void *d, const void *s, size_t n) __attribute__((alias("my_memcpy")));
+*/
 

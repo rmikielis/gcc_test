@@ -1,7 +1,10 @@
 #include <stdint.h>
 #include "lib/utils.h"
 
+
 void main() {
+
+    
 
     uint8_t data1[10];
     uint8_t data2[10];
@@ -13,8 +16,4 @@ void main() {
         printf("%d ", data2[i]);
 
     printf("\n");    
-
-    #ifdef __GNUC__
-    printf("Inside GNU...\n");
-    #endif
 }

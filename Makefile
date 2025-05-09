@@ -2,19 +2,20 @@ PROJECT = workbench
 
 CC = gcc
 CFLAGS = -Wall -std=c99 -g
-LDFLAGS = -Wl,--defsym=_memset=my_memset,--defsym=_memcpy=my_memcpy
- 
+
 SRC = main.c lib/utils.c
 OBJ = $(SRC:.c=.o)
 
 TARGET = $(PROJECT)
+
+include lib/Makefile
 
 # default rule
 all: $(TARGET)
 
 # .o into exe
 $(TARGET): $(OBJ)
-	$(CC) $(LDFLAGS) $(OBJ) -o $(TARGET)
+	$(CC) $(OBJ) $(LDFLAGS) -o $(TARGET)
 	@echo "Linking complete..."
 
 # src into .o
