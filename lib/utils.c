@@ -2,13 +2,18 @@
 #include "utils.h"
 
 
+void __attribute__((hot)) zeroing (struct my_data *var)
+{
+    *var = (struct my_data){0};
+}
 
-void show_alias(void) {
-    printf("show() from alias...\n");
+void __attribute__((hot)) copying (struct my_data *p1, struct my_data *p2)
+{
+    *p2 = *p1;
 }
 
 
-void *my_memset(void *s, int c, size_t n) {
+void *my_mem_set(void *s, int c, size_t n) {
 
     uint8_t *p = s;
 
@@ -21,7 +26,7 @@ void *my_memset(void *s, int c, size_t n) {
     return s;
 }
 
-void *my_memcpy(void *d, const void *s, size_t n) {
+void *my_mem_cpy(void *d, const void *s, size_t n) {
 
     if (d == s) {
         /* GCC demand to nop overlaping memcpy regions */
@@ -41,7 +46,7 @@ void *my_memcpy(void *d, const void *s, size_t n) {
     return d;
 }
 
-int my_memcmp(const void *s1, const void *s2, size_t n) {
+int my_mem_cmp(const void *s1, const void *s2, size_t n) {
 
     uint8_t const *t1 = s1;
     uint8_t const *t2 = s2;
@@ -57,6 +62,8 @@ int my_memcmp(const void *s1, const void *s2, size_t n) {
 
     return 0;
 }
+
+
 
 /*
 void *_memset(void *s, int c, size_t n) __attribute__((alias("*my_memset")));

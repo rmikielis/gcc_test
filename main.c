@@ -1,19 +1,21 @@
 #include <stdint.h>
 #include "lib/utils.h"
 
-
 void main() {
 
+    struct my_data f1;
+    struct my_data f2;
+
+    zeroing(&f1);
+
+    f1.data[0] = 'a';
+    f1.data[13] = 'a';
+    f1.data[66] = 'a';
+    f1.data[983] = 'a';
+    f1.data[2099] = 'a';
+    f1.data[3889] = 'a';
+    f1.data[4000] = 'a';
     
 
-    uint8_t data1[10];
-    uint8_t data2[10];
-
-    _memset(data1, 9, sizeof(data1));
-    _memcpy(data2, data1, sizeof(data1));
-
-    for (int i = 0; i < 10; i++)
-        printf("%d ", data2[i]);
-
-    printf("\n");    
+    copying(&f1, &f2);
 }
