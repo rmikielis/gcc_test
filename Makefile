@@ -1,7 +1,8 @@
-PROJECT = workbench
+PROJECT = prog
 
 CC = gcc
-CFLAGS = -Wall -std=c99 -g -O2 
+CFLAGS = -Wall -g -O0 
+CFLAGS2 = -mno-mmx -mno-sse -fno-pic -fpie -fomit-frame-pointer -fno-builtin-malloc -ffunction-sections -fdata-sections -Wall -Wstrict-prototypes -fno-common -fno-strict-aliasing -ggdb3 -O0 -I.
 
 SRC = main.c lib/utils.c
 OBJ = $(SRC:.c=.o)
@@ -31,7 +32,7 @@ $(TARGET): $(OBJ)
 
 # clean rule
 clean:
-	rm -f $(OBJ) $(TARGET) $(ASM)
+	rm -f $(OBJ) $(TARGET).elf $(ASM)
 	@echo "Cleaning done..."
 
 .PHONY: all clean
